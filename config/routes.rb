@@ -8,7 +8,9 @@ Rails.application.routes.draw do
    }
   
   root 'rooms#home'
-  get 'users/index'
+#  get 'users/index'
+  get 'users/account'
+  get 'users/profile'
   get 'rooms/home'
   get 'rooms/after_login'
   

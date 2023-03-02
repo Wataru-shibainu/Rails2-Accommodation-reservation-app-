@@ -19,6 +19,16 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
   end
+  
+  def account
+    @email = current_user.email
+  end
+
+  def profile
+
+    @name = current_user.name
+
+  end
 
   def edit
   end

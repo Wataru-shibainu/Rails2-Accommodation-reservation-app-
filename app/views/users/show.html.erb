@@ -1,5 +1,10 @@
-<h3>設定</h3>
+<h3>マイページ</h3>
 
-<%= link_to "アカウント情報（emailアドレス、パスワード）", :new_user_registration %><br>
+<%= link_to "アカウント情報（emailアドレス、パスワード）", user_path(current_user.id) %><br>
+<p>メールアドレス：　<%= @user.email %></p>
+<p>パスワード：　＊＊＊＊＊＊＊＊</p>
 
-<%= link_to "プロフィール（アイコン画像、名前、自己紹介）", :new_user_registration %>
+
+
+<%= link_to "プロフィール（アイコン画像、名前、自己紹介）", users_profile_path %>
+<%= @user.name %>
