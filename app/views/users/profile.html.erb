@@ -4,5 +4,9 @@
 
 
 <%= link_to "プロフィール（アイコン画像、名前、自己紹介）", users_profile_path %><br>
-<%= @name %>
+
+<p><%= @name %></p>
+<p><%= @introduction %></p>
+
+<p><%= link_to "編集",  users_profile_edit_path %></p>
 

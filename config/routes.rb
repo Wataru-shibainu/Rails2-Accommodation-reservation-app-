@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 #  get 'users/index'
   get 'users/account'
   get 'users/profile'
+  get 'users/profile_edit'
   get 'rooms/home'
   get 'rooms/after_login'
   
