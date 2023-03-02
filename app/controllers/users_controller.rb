@@ -25,7 +25,7 @@ class UsersController < ApplicationController
   end
 
   def profile
-    @name = current_user.name
+    @user = current_user
   end
   
   def profile_edit
