@@ -1,11 +1,17 @@
-<div class="header">
-  <%= link_to image_tag("logo_transparent.png", class: "homeicon"), root_path %>
-  ログイン後
+<div class=login_header>
+
+  <div class="homeicon">
+    <%= link_to :root, class:"homeicon_link" do %>
+      <%=  image_tag("logo_transparent.png", class:"homeicon_image") %>
+    <%end%>
+  </div>
+
+  <div class = "sign_up_sign_in">
+    <%= link_to :new_user_registration, class:"sign_up_link" do %>
+      <button class = "sign_up_button" >新規登録</button>
+  <%end%>
+
+    <%= link_to "ログイン", new_user_session_path, class:"sign_in" %>
+  </div>
+
 </div>
-
-  <%= image_tag current_user.image.thumb.url %>
-<div>あなたの名前:<%= current_user.name %></div>
-
-<%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-
-<%= link_to "マイページへ", users_account_path %>
