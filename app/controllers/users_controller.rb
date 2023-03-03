@@ -21,7 +21,7 @@ class UsersController < ApplicationController
   end
   
   def account
-    @email = current_user.email
+    @user = current_user
   end
 
   def profile
@@ -36,8 +36,8 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.find(params[:id])
-     if @user.update(params.require(:user).permit(:name, :image, :introduction))
+    @user = current_user
+     if @user.update(params.require(:user).permit(:email, :name, :image, :introduction))
        redirect_to users_profile_path
      else
        render "profile_edit"
@@ -45,6 +45,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
+
   end
   
 end

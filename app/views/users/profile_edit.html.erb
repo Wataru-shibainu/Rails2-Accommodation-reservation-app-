@@ -12,7 +12,8 @@
   <%= f.file_field :image%>
   <p><%= f.submit "編集を完了する" %></p>
   <%= image_tag @user.image.thumb.url %>
+
   
-
-
 <% end %>
+
+<%= link_to "キャンセル", :back %>

@@ -14,7 +14,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
   
   def default_url
-   "logo_transparent.png"
+   [version_thumb,"logo_transparent.png"]
   end
   
 

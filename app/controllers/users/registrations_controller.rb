@@ -16,12 +16,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
 #
 #  # GET /resource/edit
 #   def edit
-#     super
+#
 #   end
 #
 #  # PUT /resource
 #   def update
-#     super
+#
 #   end
 #
 #  # DELETE /resource
@@ -49,7 +49,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
 #   def configure_account_update_params
 #     devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
 #   end
-#
+
+   def after_update_path_for(resource)
+     users_account_path
+   end
+
   # The path used after sign up.
    def after_sign_up_path_for(resource)
      users_account_path

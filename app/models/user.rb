@@ -7,7 +7,4 @@ class User < ApplicationRecord
          
   mount_uploader :image, ImageUploader
   
-  attribute :image, :string, default: "logo_transparent.png"
-  attribute :introduction, :string, default: "超電磁砲"
-  
 end
