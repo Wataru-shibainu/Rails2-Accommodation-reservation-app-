@@ -1,0 +1,11 @@
+<div class="header">
+  <%= link_to image_tag("logo_transparent.png", class: "homeicon"), root_path %>
+  ログイン後
+</div>
+
+  <%= image_tag current_user.image.thumb.url %>
+<div>あなたの名前:<%= current_user.name %></div>
+
+<%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+
+<%= link_to "マイページへ", users_account_path %>

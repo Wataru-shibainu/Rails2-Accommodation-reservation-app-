@@ -11,12 +11,13 @@
   </head>
 
   <body>
-  <div class="header">
-  
-    <%= link_to image_tag("logo_transparent.png", class: "homeicon"), root_path %>
-      </div>
-    <%= yield %>
+    <% if user_signed_in? %>
+      <%= render 'shared/login_user_header' %>
+    <% else %>
+      <%= render 'shared/no_login_user_header' %>
+    <% end %>
+        
+      <%= yield %>
     
-
   </body>
 </html>
