@@ -1,17 +1,18 @@
 <div class=login_header>
-
+ 
   <div class="homeicon">
     <%= link_to :root, class:"homeicon_link" do %>
       <%=  image_tag("logo_transparent.png", class:"homeicon_image") %>
     <%end%>
   </div>
 
-  <div class = "sign_up_sign_in">
-    <%= link_to :new_user_registration, class:"sign_up_link" do %>
-      <button class = "sign_up_button" >新規登録</button>
-  <%end%>
-
-    <%= link_to "ログイン", new_user_session_path, class:"sign_in" %>
+  <div class=user_profile>
+    <%= image_tag current_user.image.url, class:"user_image" %>
+    <p><%= current_user.name %></p>
   </div>
 
 </div>
+
+  <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"sign_out_link" %>
+
+  <%= link_to "マイページへ", users_account_path, class:"mypage_link" %>
