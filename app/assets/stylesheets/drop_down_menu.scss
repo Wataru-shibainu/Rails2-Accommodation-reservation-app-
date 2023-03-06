@@ -1,9 +1,17 @@
-.user_menu, .menu_list {
- list-style: none;
-}
 
 .menu_list {
-background-color: lightgreen;
- padding: 0;
- display: none;
+  position:absolute;
+  z-index: 1;
+  left: 80%;
+  top: 70px;
+  
+  display: none;
+  background-color: lightgreen;
+  border-radius: 20px;
+  width: 120px;
+  
+}
+
+.user_image {
+  border-radius: 10px;
 }

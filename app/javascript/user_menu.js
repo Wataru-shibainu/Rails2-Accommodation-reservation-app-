@@ -1,6 +1,11 @@
 $(document).on("turbolinks:load", function () {
-    $(".user_menu").children("li").click(function(){
-        $(this).children("ul").stop().slideToggle(180);
+    $(document).off().click(function(e){
+      if ($(e.target).closest('.user_name').length) {
+        $(".menu_list").slideToggle(180)
+      }
+      else {
+        $(".menu_list").slideUp(180)
+      }
     });
 });
 

@@ -8,23 +8,21 @@
 
   <div class=user_profile>
     <%= image_tag current_user.image.url, class:"user_image" %>
-  
-    <ul class=user_menu>
-      <li><%= current_user.name %>▼
-        <ul class=menu_list>
-          <li>施設の新規登録</li>
-          <li>マイページ</li>
-          <li>ログアウト</li>
-        </ul>
-      </li>
-    </ul>
-   
+    <p class=user_name><%= current_user.name %></p>
   </div>
 </div>
 
-  <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"sign_out_link" %>
+<ul class=menu_list>
+  <li>施設の新規登録</li>
+  <li>予約済み一覧</li>
+  <li>登録済み一覧</li>
+  <li><%= link_to "マイページ", users_account_path, class:"mypage_link" %></li>
+  <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"sign_out_link" %></li>
+</ul>
 
-  <%= link_to "マイページへ", users_account_path, class:"mypage_link" %>
+  
+
+
 
 
   
