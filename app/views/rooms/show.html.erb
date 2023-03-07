@@ -1,43 +1,27 @@
-<p>登録済み施設一覧</p>
-
-
+<p>施設詳細</p>
+<p><%= link_to "← 登録施設一覧に戻る", rooms_own_path %></p>
+<p><%= link_to "編集", edit_room_path %></p>
+  
 <div>
-
-<table>
-  <tr>
-    <th>画像</th>
-    <th>施設名</th>
-    <th>紹介文</th>
-    <th>料金</th>
-    <th>作成日</th>
-    <th></th>
-    <th>id</th>
-  </tr>
-  
-  <% @rooms.each do |room| %>
-  
-   <tr>
-     <td>
-       <% if room.hotel_image? %>
-         <%= image_tag room.hotel_image.url, class:"hotel_image" %>
+       <% if @room.hotel_image? %>
+         <%= image_tag @room.hotel_image.url, class:"hotel_image" %>
        <% else %>
          <%= image_tag "default_hotel_image.png", class:"hotel_image" %>
        <% end %>
-     </td>
-     <td><%= room.hotel_name %></td>
-     <td><%= room.hotel_detail %></td>
-     <td><%= room.price %></td>
-     <td><%= room.created_at.to_s(:datetime_jp)%></td>
-     <td>
-       <%= link_to room_path(current_user.id), method: :delete, data: { confirm: "登録した施設を削除しますか？" }, class:"deleteicon_link" do %>
-         <%= image_tag "delete_icon.png", class:"delete_icon" %>
-       <% end %>
-     </td>
-     <td><%= room.id %></td>
-   </tr>
-   
-  <%end%>
-  
-</table>
-
 </div>
+  
+<div>
+     <p><%= @room.hotel_name %></p>
+     <p><%= @room.hotel_detail %></p>
+     <p><%= @room.price %></p>
+     <p><%= @room.address %></p>
+</div>
+
+     
+    
+ 
+   
+
+
+
+

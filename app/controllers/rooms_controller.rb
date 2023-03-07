@@ -24,8 +24,7 @@ class RoomsController < ApplicationController
   end
 
   def show
-    @user = current_user.id
-    @rooms = Room.where(user_id: @user)
+    @room = Room.find(params[:id])
   end
   
 #  各ログインユーザーが登録した施設を表示
@@ -35,9 +34,17 @@ class RoomsController < ApplicationController
   end
   
   def edit
+    @room = Room.find(params[:id])
   end
 
   def update
+    @room = Room.find(params[:id])
+    if @room.update(params.require(:room).permit(:hotel_name, :hotel_detail, :price, :address, :hotel_image))
+      redirect_to room_path
+    else
+      render "edit"
+    end
+    
   end
 
   def destroy

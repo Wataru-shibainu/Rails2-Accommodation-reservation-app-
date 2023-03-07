@@ -11,8 +11,12 @@
   <p><%= f.label :image ,"アイコン画像" %></p>
   <%= f.file_field :image%>
   <p><%= f.submit "編集を完了する" %></p>
-  <%= image_tag @user.image.thumb.url %>
 
+   <% if @user.image? %>
+     <%= image_tag @user.image.url, class:"user_edit_image" %>
+   <% else %>
+     <%= image_tag "default-avatar.png", class:"user_edit_image" %>
+   <% end %>
   
 <% end %>
 
