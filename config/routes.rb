@@ -8,13 +8,15 @@ Rails.application.routes.draw do
    }
   
   root 'rooms#home'
-#  get 'users/index'
+
   get 'users/account'
   get 'users/profile'
   get 'users/profile_edit'
+  
   get 'rooms/home'
   get 'rooms/after_login'
   get 'rooms/own'
+  get 'rooms/search'
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   
