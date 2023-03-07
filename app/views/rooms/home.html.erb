@@ -1,3 +1,16 @@
 <p>このページは仮のトップページです。</p>
 
+<%= search_form_for @q, url:rooms_search_result_path do |f| %>
+    <%= f.label :address_cont, "エリア検索" %>
+    <%= f.search_field :address_cont %>
+    <%= f.submit %>
+    
+    <%= f.label :hotel_detail_cont, "キーワード検索" %>
+    <%= f.search_field :hotel_detail_cont %>
+    <%= f.submit %>
+<% end %>
+
+
+
+
 

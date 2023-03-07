@@ -1,9 +1,14 @@
 class RoomsController < ApplicationController
   
+#  ransackメソッドによる情報の検索
   def home
+    @q = Room.ransack(params[:q])
   end
   
-  def after_login
+#  検索結果の受け取り、表示
+  def search_result
+    @q = Room.ransack(params[:q])
+    @rooms = @q.result(distinct: true)
   end
   
   def index
