@@ -14,9 +14,11 @@ Rails.application.routes.draw do
   get 'users/profile_edit'
   get 'rooms/home'
   get 'rooms/after_login'
+  get 'rooms/own'
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   
   resources :users
+  resources :rooms
   
 end
