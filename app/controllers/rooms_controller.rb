@@ -14,15 +14,13 @@ class RoomsController < ApplicationController
   end
 
   def create
-   
     @room = Room.new(params.require(:room).permit(:hotel_name, :hotel_detail, :price, :address, :hotel_image, :user_id))
    
     if @room.save
-      redirect_to root_path
+      redirect_to rooms_own_path
     else
       render "new"
     end
-   
   end
 
   def show
