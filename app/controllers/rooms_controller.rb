@@ -1,15 +1,28 @@
 class RoomsController < ApplicationController
   
-#  ransackメソッドによる情報の検索
+#  ホーム画面、検索フォーム入力情報の受け渡し
   def home
-    @q = Room.ransack(params[:q])
+    @area = Room.area_search(params[:area])
+    @keyword = Room.keyword_search(params[:keyword])
   end
-    
+   
 #  検索結果の受け取り、表示
   def search_result
-    @q = Room.ransack(params[:q])
-    @rooms = @q.result(distinct: true)
+    @area = Room.area_search(params[:area])
+    @keyword = Room.keyword_search(params[:keyword])
+    
+    if @area == nil && @keyword == nil
+      @area_and_keyword = nil
+    elsif @area == nil
+      @area_and_keyword = @keyword
+    elsif @keyword == nil
+      @area_and_keyword = @area
+    else
+      @area_and_keyword = (@area+ @keyword).uniq
+    end
+    
   end
+  
   
   def index
   end
