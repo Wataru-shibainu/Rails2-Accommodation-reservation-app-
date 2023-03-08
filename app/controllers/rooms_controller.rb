@@ -4,7 +4,7 @@ class RoomsController < ApplicationController
   def home
     @q = Room.ransack(params[:q])
   end
-  
+    
 #  検索結果の受け取り、表示
   def search_result
     @q = Room.ransack(params[:q])

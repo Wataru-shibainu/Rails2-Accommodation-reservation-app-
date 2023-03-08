@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   get 'rooms/after_login'
   get 'rooms/own'
   get 'rooms/search_result'
+  get 'rooms/search'
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   
