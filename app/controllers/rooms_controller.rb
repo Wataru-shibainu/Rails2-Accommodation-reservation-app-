@@ -8,6 +8,8 @@ class RoomsController < ApplicationController
    
 #  検索結果の受け取り、表示
   def search_result
+
+#検索関連
     @area = Room.area_search(params[:area])
     @keyword = Room.keyword_search(params[:keyword])
     
@@ -21,10 +23,13 @@ class RoomsController < ApplicationController
       @area_and_keyword = (@area+ @keyword).uniq
     end
     
+#    @rooms = Room.find(params[:id])
+    
   end
   
   
   def index
+    @rooms = Room.all
   end
 
   def new
@@ -41,6 +46,7 @@ class RoomsController < ApplicationController
     end
   end
 
+#各ログインユーザーが登録した施設の詳細を表示
   def show
     @room = Room.find(params[:id])
   end
