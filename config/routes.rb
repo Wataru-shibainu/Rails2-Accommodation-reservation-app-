@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
  
+  get 'reservations/index'
   devise_for :users, :controllers => {
 #    :confirmations => 'users/confirmations',
     :registrations => 'users/registrations',
