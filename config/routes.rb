@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'reservations/index'
   devise_for :users, controllers: {
     #    :confirmations => 'users/confirmations',
     registrations: 'users/registrations'
@@ -19,6 +18,10 @@ Rails.application.routes.draw do
   get 'rooms/search_result'
   get 'rooms/search'
 
+  get 'reservations/index'
+  get 'reservations/confirm'
+
+  post 'rooms/reservation_create', to: 'rooms#reservation_create'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   resources :users

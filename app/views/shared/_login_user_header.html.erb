@@ -1,28 +1,18 @@
 <div class=login_header>
- 
   <div class="homeicon">
     <%= link_to :root, class:"homeicon_link" do %>
       <%=  image_tag("logo_transparent.png", class:"homeicon_image") %>
     <%end%>
   </div>
-
   <div class=user_profile>
     <%= image_tag current_user.image.url, class:"user_image" %>
     <p class=user_name><%= current_user.name %></p>
   </div>
-  </div>
-
+</div>
 <ul class=menu_list>
   <li><%= link_to "施設の新規登録", new_room_path %></li>
-  <li>予約済み施設</li>
+  <li><%= link_to "予約済み施設", reservations_path %></li>
   <li><%= link_to "登録済み施設", rooms_own_path, class:"registered_room" %></li>
   <li><%= link_to "マイページ", users_account_path, class:"mypage_link" %></li>
   <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"sign_out_link" %></li>
 </ul>
-
-  
-
-
-
-
-  

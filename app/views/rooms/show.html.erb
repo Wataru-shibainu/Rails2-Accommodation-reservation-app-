@@ -21,5 +21,7 @@
   <%= f.label :check_out_date ,"チェックアウト" %>
   <%= f.date_field :check_out_date %>
   <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.hidden_field :room_id, value: @room.id %>
+  <%= f.submit "保存"%>
 <% end %>
-<p><%= link_to "予約する", reservations_path %></p>
+<%= link_to "キャンセル", :back %>
