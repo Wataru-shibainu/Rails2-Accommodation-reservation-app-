@@ -1,52 +1,33 @@
 <p>施設情報編集</p>
-  
-
-  
-
- <%= form_with model: @room do |f| %>
- 
-   <div class="hotel_name">
+<%= form_with model: @room do |f| %>
+  <div class="hotel_name">
     <%= f.label :hotel_name, "施設名" %><br />
     <%= f.text_field :hotel_name %>
   </div>
-  
   <div class="hotel_detail">
     <%= f.label :hotel_detail, "施設詳細" %><br />
     <%= f.text_area :hotel_detail %>
   </div>
-
   <div class="price">
     <%= f.label :price, "料金" %><br />
     <%= f.text_field :price %>
   </div>
-
   <div class="address">
     <%= f.label :address, "住所" %><br />
     <%= f.text_field :address %>
   </div>
-  
-　<div class="hotel_image">
+  <div class="hotel_image">
     <%= f.label :hotel_image, "施設画像" %><br />
     <%= f.file_field :hotel_image %>
-  　<div>
-     <% if @room.hotel_image? %>
-       <%= image_tag @room.hotel_image.url, class:"hotel_image" %>
-     <% else %>
-       <%= image_tag "default_hotel_image.png", class:"hotel_image" %>
-     <% end %>
-  　</div>
-　</div>
-  
+    <div>
+      <% if @room.hotel_image? %>
+        <%= image_tag @room.hotel_image.url, class:"hotel_image" %>
+      <% else %>
+        <%= image_tag "default_hotel_image.png", class:"hotel_image" %>
+      <% end %>
+    </div>
+  </div>
   <%= f.hidden_field :user_id, value: current_user.id %>
-  
   <%= f.submit "保存"%>
   <%= link_to "編集を中止する", :back %>
-  
- <% end %>
-    
- 
-   
-
-
-
-
+<% end %>

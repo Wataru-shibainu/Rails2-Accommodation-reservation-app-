@@ -1,36 +1,21 @@
 <p>検索結果表示</p>
-
-<div>
-  <% if @area_and_keyword != nil %>
-  
+<% if @area_and_keyword != nil %>
+  <div class = "hotel_list">
     <% @area_and_keyword.each do |f| %>
-    
-      <% if f.hotel_image? %>
-        <%= image_tag f.hotel_image.url, class:"search_result_hotel_image" %>
-      <% else %>
-       <%= image_tag "default_hotel_image.png", class:"search_result_hotel_image" %>
-      <% end %>
-      
-      <%= f.hotel_name %>
-      <%= f.hotel_detail %>
-      <%= f.address %>
-      <%= f.price %>
-          
-      <p><%=  link_to "施設詳細", room_path(f.id) %></p>
-      
+      <div class = "hotel_information">
+        <% if f.hotel_image? %>
+          <%= image_tag f.hotel_image.url, class:"search_result_hotel_image" %>
+        <% else %>
+          <%= image_tag "default_hotel_image.png", class:"search_result_hotel_image" %>
+        <% end %>
+        <p><%= f.hotel_name %></p>
+        <p><%= f.hotel_detail %></p>
+        <p><%= f.address %></p>
+        <p><%= f.price %></p>
+        <p><%=  link_to "施設詳細", room_path(f.id) %></p>
+      </div>
     <% end %>
-   
-    
-  <% else %>
-  
-    <p>検索結果はありません。</p>
-    
-  <% end %>
-</div>
-    
- 
-   
-
-
-
-
+  </div>
+<% else %>
+  <p class = "no_result_notice">検索結果はありません。</p>
+<% end %>
