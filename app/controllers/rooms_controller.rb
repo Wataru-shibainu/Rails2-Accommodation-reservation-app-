@@ -1,29 +1,27 @@
 class RoomsController < ApplicationController
-  
-#  ホーム画面、検索フォーム入力情報の受け渡し
+  #  ホーム画面、検索フォーム入力情報の受け渡し
+  # area_search,keyword_searchはroom.rbで定義
   def home
     @area = Room.area_search(params[:area])
     @keyword = Room.keyword_search(params[:keyword])
   end
-   
-#  検索結果の受け取り、表示
+
+  #  検索結果の受け取り、表示
   def search_result
-    
     @area = Room.area_search(params[:area])
     @keyword = Room.keyword_search(params[:keyword])
-    
-    if @area == nil && @keyword == nil
-      @area_and_keyword = nil
-    elsif @area == nil
-      @area_and_keyword = @keyword
-    elsif @keyword == nil
-      @area_and_keyword = @area
-    else
-      @area_and_keyword = (@area+ @keyword).uniq
-    end
-    
+
+    @area_and_keyword = if @area.nil? && @keyword.nil?
+                          nil
+                        elsif @area.nil?
+                          @keyword
+                        elsif @keyword.nil?
+                          @area
+                        else
+                          (@area + @keyword).uniq
+                        end
   end
-  
+
   def index
     @rooms = Room.all
   end
@@ -34,25 +32,25 @@ class RoomsController < ApplicationController
 
   def create
     @room = Room.new(params.require(:room).permit(:hotel_name, :hotel_detail, :price, :address, :hotel_image, :user_id))
-   
+
     if @room.save
       redirect_to rooms_own_path
     else
-      render "new"
+      render 'new'
     end
   end
 
-#各ログインユーザーが登録した施設の詳細を表示
+  # 各ログインユーザーが登録した施設の詳細を表示
   def show
     @room = Room.find(params[:id])
   end
-  
-#  各ログインユーザーが登録した施設全てを表示
+
+  #  各ログインユーザーが登録した施設全てを表示
   def own
     @user = current_user.id
     @rooms = Room.where(user_id: @user)
   end
-  
+
   def edit
     @room = Room.find(params[:id])
   end
@@ -62,7 +60,7 @@ class RoomsController < ApplicationController
     if @room.update(params.require(:room).permit(:hotel_name, :hotel_detail, :price, :address, :hotel_image))
       redirect_to room_path
     else
-      render "edit"
+      render 'edit'
     end
   end
 
@@ -71,5 +69,4 @@ class RoomsController < ApplicationController
     @room.destroy
     redirect_to rooms_own_path
   end
-
 end

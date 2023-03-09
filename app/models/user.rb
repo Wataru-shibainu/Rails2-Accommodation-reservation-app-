@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   has_many :rooms
-  has_meny :reservations
+  has_many :reservations
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
