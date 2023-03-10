@@ -40,26 +40,16 @@ class RoomsController < ApplicationController
     end
   end
 
-  # 各ログインユーザーが登録した施設の詳細を表示
-  def show
-    @room = Room.find(params[:id])
-    @reservation = Reservation.new
-
-    # def reservation_create
-    #   @reservation = Reservation.new(params.require(:reservation).permit(:check_in_date, :check_out_date))
-
-    #   if @reservation.save
-    #     redirect_to reservations_confirm_path
-    #   else
-    #     redirect_to reservations_confirm_path
-    #   end
-    # end
-  end
-
   #  各ログインユーザーが登録した施設全てを表示
   def own
     @user = current_user.id
     @rooms = Room.where(user_id: @user)
+  end
+
+  # 各ログインユーザーが登録した施設の詳細を表示
+  def show
+    @room = Room.find(params[:id])
+    @reservation = Reservation.new
   end
 
   def edit

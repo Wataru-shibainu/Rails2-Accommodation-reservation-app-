@@ -1,17 +1,15 @@
 <p>予約一覧</p>
-<div>
-  <table>
-    <tr>
-      <th>画像</th>
-      <th>施設名</th>
-      <th>紹介文</th>
-      <th>料金</th>
-      <th>登録日</th>
-      <th></th>
-      <th>id</th>
-      <th>user_id</th>
-    </tr>
-    <%# <% @reservation.each do |f| %>
-      <%# <%end%>
-    </table>
-  </div>
+<% @reservation.each do |reservation|%>
+  <p>施設画像</p>
+  <% if reservation.room.hotel_image? %>
+    <%= image_tag reservation.room.hotel_image.url, class:"hotel_image" %>
+  <% else %>
+    <%= image_tag "default_hotel_image.png", class:"hotel_image" %>
+  <% end %>
+  <p>施設名:<%= reservation.room.hotel_name %></p>
+  <p>紹介文:<%= reservation.room.hotel_detail %></p>
+  <p>ユーザid:<%= reservation.user_id %></p>
+  <p>ルームid:<%= reservation.room_id %></p>
+  <p>チェックイン：<%=  reservation.check_in_date %></p>
+  <p>チェックアウト：<%= reservation.check_out_date %></p>
+<%end%>

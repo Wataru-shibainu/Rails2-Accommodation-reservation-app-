@@ -1,3 +1,16 @@
 <p>予約内容確認</p>
-<p><%= @reservation.check_in_date %></p>
-<p><%= @reservation.check_out_date %></p>
+<p>予約id:<%=  %></p>
+<p>ユーザid:<%= @reservation.user_id %></p>
+<p>ルームid:<%= @reservation.room_id %></p>
+<p>チェックイン：<%=  @reservation.check_in_date %></p>
+<p>チェックアウト：<%= @reservation.check_out_date %></p>
+<p>日数</p>
+<p>人数<%=  %></p>
+<p>お支払い金額</p>
+<%= form_with model: @reservation, url:reservations_path do |f| %>
+  <%= f.hidden_field :check_in_date %>
+  <%= f.hidden_field :check_out_date %>
+  <%= f.hidden_field :user_id %>
+  <%= f.hidden_field :room_id %>
+  <%= f.submit "予約を確定する"%>
+<% end %>
