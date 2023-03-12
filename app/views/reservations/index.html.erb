@@ -28,10 +28,10 @@
           <% end %>
         </td>
         <td><%= reservation.room.hotel_detail %></td>
-        <td><%= reservation.room.price * (reservation.check_out_date - reservation.check_in_date).to_i * reservation.reservation_number_of_people %></td>
-        <td><%= reservation.check_in_date %></td>
-        <td><%= reservation.check_out_date %></td>
-        <td><%= reservation.created_at %></td>
+        <td>¥<%= (reservation.room.price * (reservation.check_out_date - reservation.check_in_date).to_i * reservation.reservation_number_of_people).to_s(:delimited) %></td>
+        <td><%= reservation.check_in_date.strftime("%Y/%m/%d") %></td>
+        <td><%= reservation.check_out_date.strftime("%Y/%m/%d") %></td>
+        <td><%= reservation.created_at.strftime("%Y/%m/%d %H:%M") %></td>
         <td>
           <%= link_to reservation, method: :delete, data: { confirm: "登録した施設を削除しますか？" }, class:"reservation_edit_link" do %>
             <%= image_tag "three_dot_icon.png", class:"reservation_edit_icon" %>

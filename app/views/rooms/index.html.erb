@@ -1,4 +1,5 @@
 <p>登録施設一覧</p>
+<p>登録施設総数：<%= @number_of_rooms %>件</p>
 <div class = "hotels">
   <% @rooms.each do |f| %>
     <% if f.hotel_image? %>

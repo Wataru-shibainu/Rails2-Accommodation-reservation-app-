@@ -26,8 +26,8 @@
           <% end %>
         </td>
         <td><%= room.hotel_detail %></td>
-        <td><%= room.price %></td>
-        <td><%= room.created_at.to_s(:datetime_jp)%></td>
+        <td>¥<%= room.price.to_s(:delimited) %></td>
+        <td><%= room.created_at.strftime("%Y/%m/%d")%></td>
         <td>
           <%= link_to room_path(room.id), method: :delete, data: { confirm: "登録した施設を削除しますか？" }, class:"delete_icon_link" do %>
             <%= image_tag "delete_icon.png", class:"delete_icon" %>

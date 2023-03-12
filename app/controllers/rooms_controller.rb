@@ -20,10 +20,12 @@ class RoomsController < ApplicationController
                         else
                           (@area + @keyword).uniq
                         end
+    @number_of_searchs = @area_and_keyword.size
   end
 
   def index
     @rooms = Room.all
+    @number_of_rooms = @rooms.size
   end
 
   def new

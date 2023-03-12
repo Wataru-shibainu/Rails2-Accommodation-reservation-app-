@@ -1,5 +1,6 @@
 <p>検索結果表示</p>
 <% if @area_and_keyword != nil %>
+  <p><%= @number_of_searchs %>件見つかりました</p>
   <div class = "hotel_list">
     <% @area_and_keyword.each do |f| %>
       <div class = "hotel_information">
