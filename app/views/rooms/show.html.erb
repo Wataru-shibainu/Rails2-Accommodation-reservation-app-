@@ -1,6 +1,6 @@
 <p>施設詳細</p>
 <p><%= link_to "← 戻る", :back %></p>
-<p><%= link_to "編集", edit_room_path %></p>
+<p><%= link_to "編集", edit_room_path(@room.id) %></p>
 <div>
   <% if @room.hotel_image? %>
     <%= image_tag @room.hotel_image.url, class:"hotel_image" %>
@@ -17,8 +17,19 @@
 <%= form_with model: @reservation, url:reservations_confirm_path do |f| %>
   <%= f.label :check_in_date ,"チェックイン" %>
   <%= f.date_field :check_in_date %>
+  <% if flash[:check_in_date] %>
+    <p class="confirm"><%= flash[:check_in_date] %></p>
+  <% end %>
   <%= f.label :check_out_date ,"チェックアウト" %>
   <%= f.date_field :check_out_date %>
+  <% if flash[:check_out_date] %>
+    <p class="confirm"><%= flash[:check_out_date] %></p>
+  <% end %>
+  <%= f.label :reservation_number_of_people ,"人数" %>
+  <%= f.text_field :reservation_number_of_people %>
+  <% if flash[:reservation_number_of_people] %>
+    <p class="confirm"><%= flash[:reservation_number_of_people] %></p>
+  <% end %>
   <%= f.hidden_field :user_id, value: current_user.id %>
   <%= f.hidden_field :room_id, value: @room.id %>
   <%= f.submit "予約確認画面へ"%>
