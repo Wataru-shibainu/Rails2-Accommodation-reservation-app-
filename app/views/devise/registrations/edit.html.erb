@@ -1,41 +1,43 @@
 <h2>アカウント編集</h2>
-
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
   <div class="field">
     <%= f.label :email, "メールアドレス" %>
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <% if @user.errors.include?(:email) %>
+      <p style="color: red;"><%= @user.errors.full_messages_for(:email).first %></p>
+    <% end %>
   </div>
-
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
-
   <div class="field">
     <%= f.label :password, "変更後パスワード" %>
     <%= f.password_field :password, autocomplete: "new-password" %>
     <% if @minimum_password_length %>
     <% end %>
+    <% if @user.errors.include?(:password) %>
+      <p style="color: red;"><%= @user.errors.full_messages_for(:password).first %></p>
+    <% end %>
   </div>
-
   <div class="field">
     <%= f.label :password_confirmation, "確認用パスワード" %>
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    <% if @user.errors.include?(:password_confirmation) %>
+      <p style="color: red;"><%= @user.errors.full_messages_for(:password_confirmation).first %></p>
+    <% end %>
   </div>
-
   <div class="field">
     <%= f.label :current_password, "現在のパスワード" %>
     <%= f.password_field :current_password, autocomplete: "current-password" %>
+    <% if @user.errors.include?(:current_password) %>
+      <p style="color: red;"><%= @user.errors.full_messages_for(:current_password).first %></p>
+    <% end %>
   </div>
-
   <div class="actions">
     <%= f.submit "保存" %>
   </div>
 <% end %>
-
 <!--<h3>Cancel my account</h3>
 
 <div>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div>-->
-
 <%= link_to "キャンセル", users_account_path %>

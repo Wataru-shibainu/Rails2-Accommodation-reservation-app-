@@ -1,23 +1,19 @@
 <h3>編集</h3>
-
 <%= form_with model: @user do |f| %>
-
   <p><%= f.label :name ,"名前" %></p>
   <p><%= f.text_field :name %></p>
-
+  <% if @user.errors.include?(:name) %>
+    <p style="color: red;"><%= @user.errors.full_messages_for(:name).first %></p>
+  <% end %>
   <p><%= f.label :introduction ,"自己紹介" %></p>
   <p><%= f.text_field :introduction %></p>
-
   <p><%= f.label :image ,"アイコン画像" %></p>
   <%= f.file_field :image%>
   <p><%= f.submit "編集を完了する" %></p>
-
-   <% if @user.image? %>
-     <%= image_tag @user.image.url, class:"user_edit_image" %>
-   <% else %>
-     <%= image_tag "default-avatar.png", class:"user_edit_image" %>
-   <% end %>
-  
+  <% if @user.image? %>
+    <%= image_tag @user.image.url, class:"user_edit_image" %>
+  <% else %>
+    <%= image_tag "default-avatar.png", class:"user_edit_image" %>
+  <% end %>
 <% end %>
-
 <%= link_to "キャンセル", :back %>
