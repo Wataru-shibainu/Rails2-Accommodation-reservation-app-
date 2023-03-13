@@ -1,0 +1,18 @@
+<p>登録施設一覧</p>
+<p>登録施設総数：<%= @number_of_rooms %>件</p>
+<div class = "hotel_list">
+  <% @rooms.each do |f| %>
+    <div class = "hotel_information" >
+      <% if f.hotel_image? %>
+        <%= image_tag f.hotel_image.url, class:"search_result_hotel_image" %>
+      <% else %>
+        <%= image_tag "default_hotel_image.png", class:"search_result_hotel_image" %>
+      <% end %>
+      <p><%= f.hotel_name %></p>
+      <p><%= f.hotel_detail %></p>
+      <p><%= f.address %></p>
+      <p><%= f.price.to_s(:delimited) %></p>
+      <p><%=  link_to "施設詳細", room_path(f.id) %></p>
+    </div>
+  <% end %>
+</div>

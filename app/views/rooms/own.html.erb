@@ -1,0 +1,41 @@
+<p>登録済み施設一覧</p>
+<div>
+  <table>
+    <tr>
+      <th>画像</th>
+      <th>施設名</th>
+      <th>紹介文</th>
+      <th>料金</th>
+      <th>登録日</th>
+      <th></th>
+      <th>id</th>
+      <th>user_id</th>
+    </tr>
+    <% @rooms.each do |room| %>
+      <tr>
+        <td>
+          <% if room.hotel_image? %>
+            <%= image_tag room.hotel_image.url, class:"hotel_image" %>
+          <% else %>
+            <%= image_tag "default_hotel_image.png", class:"hotel_image" %>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to room_path(room.id) do%>
+            <%= room.hotel_name %>
+          <% end %>
+        </td>
+        <td><%= room.hotel_detail %></td>
+        <td>¥<%= room.price.to_s(:delimited) %></td>
+        <td><%= room.created_at.strftime("%Y/%m/%d")%></td>
+        <td>
+          <%= link_to room_path(room.id), method: :delete, data: { confirm: "登録した施設を削除しますか？" }, class:"delete_icon_link" do %>
+            <%= image_tag "delete_icon.png", class:"delete_icon" %>
+          <% end %>
+        </td>
+        <td><%= room.id %></td>
+        <td><%= room.user_id %></td>
+      </tr>
+    <%end%>
+  </table>
+</div>

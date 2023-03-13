@@ -1,0 +1,50 @@
+
+.no_login_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+  background-color: #FFFFAA;
+}
+
+.homeicon {
+  width: 100px;
+  height: 100px;
+  margin-left: 20px;
+}
+
+.homeicon_link {
+  width: 100px;
+  height: 100px;
+}
+
+.homeicon_image {
+  width: 100px;
+}
+ 
+.sign_up_sign_in {
+  margin-right: 30px;
+}
+ 
+.sign_up_link {
+  position: relative;
+  right: 30px;
+  text-decoration: none;
+}
+
+.sign_up_button {
+  background-color: lightgreen;
+  border: none;
+  border-radius: 10px;
+  padding: 20px;
+  font-size: 15px;
+  
+}
+ 
+.sign_in {
+  text-decoration: none;
+}
+
+.sign_in:visited {
+  color: black;
+}

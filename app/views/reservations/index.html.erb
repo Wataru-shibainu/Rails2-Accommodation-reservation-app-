@@ -1,0 +1,43 @@
+<p>予約一覧</p>
+<table>
+  <thead>
+    <tr>
+      <th>施設画像</th>
+      <th>施設名</th>
+      <th>紹介文</th>
+      <th>合計料金</th>
+      <th>チェックイン</th>
+      <th>チェックアウト</th>
+      <th>予約確定日時</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @reservations.each do |reservation|%>
+      <tr>
+        <td>
+          <% if reservation.room.hotel_image? %>
+            <%= image_tag reservation.room.hotel_image.url, class:"hotel_image" %>
+          <% else %>
+            <%= image_tag "default_hotel_image.png", class:"hotel_image" %>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to room_path(reservation.room_id) do %>
+            <%= reservation.room.hotel_name %>
+          <% end %>
+        </td>
+        <td><%= reservation.room.hotel_detail %></td>
+        <td>¥<%= (reservation.room.price * (reservation.check_out_date - reservation.check_in_date).to_i * reservation.reservation_number_of_people).to_s(:delimited) %></td>
+        <td><%= reservation.check_in_date.strftime("%Y/%m/%d") %></td>
+        <td><%= reservation.check_out_date.strftime("%Y/%m/%d") %></td>
+        <td><%= reservation.created_at.strftime("%Y/%m/%d %H:%M") %></td>
+        <td>
+          <%= link_to reservation, method: :delete, data: { confirm: "登録した施設を削除しますか？" }, class:"reservation_edit_link" do %>
+            <%= image_tag "three_dot_icon.png", class:"reservation_edit_icon" %>
+          <% end %>
+        </td>
+      </tr>
+    <%end%>
+  </tbody>
+</table>

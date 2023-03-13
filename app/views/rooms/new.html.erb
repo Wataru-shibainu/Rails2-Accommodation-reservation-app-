@@ -1,0 +1,40 @@
+<p>施設新規登録</p>
+<%= form_with model: @room do |f| %>
+  <% if @room.errors.any? %>
+  <% end %>
+  <div class="hotel_name">
+    <%= f.label :hotel_name, "施設名" %>
+    <%= f.text_field :hotel_name %>
+    <% if @room.errors.include?(:hotel_name) %>
+      <p style="color: red;"><%= @room.errors.full_messages_for(:hotel_name).first %></p>
+    <% end %>
+  </div>
+  <div class="hotel_detail">
+    <%= f.label :hotel_detail, "施設詳細" %>
+    <%= f.text_area :hotel_detail %>
+    <% if @room.errors.include?(:hotel_detail) %>
+      <p style="color: red;"><%= @room.errors.full_messages_for(:hotel_detail).first %></p>
+    <% end %>
+  </div>
+  <div class="price">
+    <%= f.label :price, "料金" %>
+    <%= f.text_field :price %>
+    <% if @room.errors.include?(:price) %>
+      <p style="color: red;"><%= @room.errors.full_messages_for(:price).first %></p>
+    <% end %>
+  </div>
+  <div class="address">
+    <%= f.label :address, "住所" %>
+    <%= f.text_field :address %>
+    <% if @room.errors.include?(:address) %>
+      <p style="color: red;"><%= @room.errors.full_messages_for(:address).first %></p>
+    <% end %>
+  </div>
+  <div class="hotel_image">
+    <%= f.label :hotel_image, "施設画像" %>
+    <%= f.file_field :hotel_image %>
+  </div>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.submit "保存"%>
+  <%= link_to "キャンセル", :back %>
+<% end %>

@@ -1,0 +1,21 @@
+.hotel_list {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-right: 50px;
+  margin-left: 50px;
+}
+
+.hotel_information {
+  background-color: lightgreen;
+  border-radius: 10px;
+  width: 45%;
+  margin: 10px;
+  padding: 10px;
+}
+
+.search_result_hotel_image {
+  display: block;
+  width: 80%;
+  margin: auto;
+}
