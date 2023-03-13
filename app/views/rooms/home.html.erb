@@ -1,12 +1,51 @@
-<div class = "search_form">
-  <div>
-    <%= form_with(url: rooms_search_result_path, local: true, method: :get )  do |f| %>
+<div class = "search_function">
+  <%= form_with(url: rooms_search_result_path, local: true, method: :get, class:"search_form" )  do |f| %>
+    <div>
       <%= f.label :area, "エリア検索" %>
       <%= f.text_field :area %>
+    </div>
+    <div>
       <%= f.label :keyword, "キーワード検索" %>
       <%= f.text_field :keyword %>
+    </div>
+    <div>
       <%= f.submit "検索" %>
-    <% end %>
+    </div>
+    <p><%= link_to "全ての登録施設を見る", rooms_path %></p>
+  <% end %>
+  <h2>おすすめのエリア</h2>
+  <div class = "recommended_area">
+    <div class = "tokyo_area">
+      <p class = "area_name">東京/Tokyo</p>
+      <%= form_with(url: rooms_search_result_path, local: true, method: :get )  do |f| %>
+        <%= f.hidden_field :area, value: "東京" %>
+        <%= f.hidden_field :keyword, value: nil %>
+        <%= image_submit_tag("tokyo.jpg", class: 'area_icon') %>
+      <% end %>
+    </div>
+    <div class = "osaka_area">
+      <p class = "area_name">大阪/Osaka</p>
+      <%= form_with(url: rooms_search_result_path, local: true, method: :get )  do |f| %>
+        <%= f.hidden_field :area, value: "大阪" %>
+        <%= f.hidden_field :keyword, value: nil %>
+        <%= image_submit_tag("osaka.jpg", class: 'area_icon') %>
+      <% end %>
+    </div>
+    <div class = "kyoto_area">
+      <p class = "area_name">京都/Kyoto</p>
+      <%= form_with(url: rooms_search_result_path, local: true, method: :get )  do |f| %>
+        <%= f.hidden_field :area, value: "京都" %>
+        <%= f.hidden_field :keyword, value: nil %>
+        <%= image_submit_tag("kyoto.jpg", class: 'area_icon') %>
+      <% end %>
+    </div>
+    <div class = "sapporo_area">
+      <p class = "area_name">札幌/Sapporo</p>
+      <%= form_with(url: rooms_search_result_path, local: true, method: :get )  do |f| %>
+        <%= f.hidden_field :area, value: "札幌" %>
+        <%= f.hidden_field :keyword, value: nil %>
+        <%= image_submit_tag("sapporo.jpg", class: 'area_icon') %>
+      <% end %>
+    </div>
   </div>
-  <p><%= link_to "全ての登録施設を見る", rooms_path %></p>
 </div>

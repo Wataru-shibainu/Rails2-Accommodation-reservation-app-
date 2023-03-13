@@ -4,6 +4,7 @@ class RoomsController < ApplicationController
   def home
     @area = Room.area_search(params[:area])
     @keyword = Room.keyword_search(params[:keyword])
+    @tokyo = Room.where('address like ?', '%東京%')
   end
 
   #  検索結果の受け取り、表示
@@ -11,15 +12,18 @@ class RoomsController < ApplicationController
     @area = Room.area_search(params[:area])
     @keyword = Room.keyword_search(params[:keyword])
 
-    @area_and_keyword = if @area.nil? && @keyword.nil?
+    @area_and_keyword = if @area.blank? && @keyword.blank?
                           nil
-                        elsif @area.nil?
+                        elsif @area.blank?
                           @keyword
-                        elsif @keyword.nil?
+                        elsif @keyword.blank?
                           @area
                         else
                           (@area + @keyword).uniq
                         end
+
+    return unless !@area.blank? || !@keyword.blank?
+
     @number_of_searchs = @area_and_keyword.size
   end
 
