@@ -34,3 +34,8 @@ ja:
     attributes:
       user:
         name: ユーザー名
+      room:
+        hotel_name: 施設名
+        hotel_detail: 施設詳細
+        price: 料金
+        address: 住所

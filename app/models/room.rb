@@ -17,4 +17,9 @@ class Room < ApplicationRecord
 
     Room.where('address like?', "%#{area_search}%")
   end
+
+  validates :hotel_name, presence: true
+  validates :hotel_detail, presence: true
+  validates :price, presence: true
+  validates :address, presence: true
 end
