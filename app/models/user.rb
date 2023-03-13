@@ -8,4 +8,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   mount_uploader :image, ImageUploader
+
+  validates :name, presence: { message: 'は入力必須項目です' }
+  # validates :email, presence: { message: 'メールアドレスは入力必須項目です' }
+  # validates :password, presence: { message: 'パスワードは入力必須項目です' }
+  # validates :password_confirmation, presence: { message: '確認用パスワードは入力必須項目です' }
 end
