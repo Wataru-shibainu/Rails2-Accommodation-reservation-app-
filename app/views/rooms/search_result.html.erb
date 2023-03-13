@@ -12,7 +12,7 @@
         <p><%= f.hotel_name %></p>
         <p><%= f.hotel_detail %></p>
         <p><%= f.address %></p>
-        <p><%= f.price %></p>
+        <p>¥<%= f.price.to_s(:delimited) %></p>
         <p><%=  link_to "施設詳細", room_path(f.id) %></p>
       </div>
     <% end %>

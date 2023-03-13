@@ -1,7 +1,10 @@
 <p>施設詳細</p>
 <p><%= link_to "← 戻る", :back %></p>
-<% if @room.user_id == current_user.id %>
-  <p><%= link_to "編集", edit_room_path(@room.id) %></p>
+<% if user_signed_in? %>
+  <% if @room.user_id == current_user.id %>
+    <p><%= link_to "編集", edit_room_path(@room.id) %></p>
+  <% end %>
+<%else%>
 <% end %>
 <div>
   <% if @room.hotel_image? %>
@@ -13,7 +16,7 @@
 <div>
   <p><%= @room.hotel_name %></p>
   <p><%= @room.hotel_detail %></p>
-  <p><%= @room.price %></p>
+  <p>¥<%= @room.price.to_s(:delimited) %></p>
   <p><%= @room.address %></p>
 </div>
 <% if user_signed_in? %>

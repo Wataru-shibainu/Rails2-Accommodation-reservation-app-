@@ -6,7 +6,7 @@
 <p>チェックアウト：<%= @reservation.check_out_date %></p>
 <p>日数：<%= @stay_days %></p>
 <p>人数：<%= @reservation.reservation_number_of_people %></p>
-<p>お支払い金額：<%= @total_price %></p>
+<p>お支払い金額：¥<%= @total_price.to_s(:delimited) %></p>
 <%= form_with model: @reservation, url:reservations_path do |f| %>
   <%= f.hidden_field :check_in_date %>
   <%= f.hidden_field :check_out_date %>
