@@ -1,18 +1,12 @@
 <h3>マイページ</h3>
-
 <%= link_to "アカウント情報（emailアドレス、パスワード）", users_account_path %><br>
-
 <%= link_to "プロフィール（アイコン画像、名前、自己紹介）", users_profile_path %><br>
-
-<p><%= @user.name %></p>
-<p><%= @user.introduction %></p>
-
-       <% if @user.image? %>
-         <%= image_tag @user.image.url, class:"user_profile_image" %>
-       <% else %>
-         <%= image_tag "default-avatar.png", class:"user_profile_image" %>
-       <% end %>
-       
-
+<p>ユーザー名:<%= @user.name %></p>
+<p>自己紹介文:<%= @user.introduction %></p>
+<p>アイコン画像</p>
+<% if @user.image? %>
+  <%= image_tag @user.image.url, class:"user_profile_image" %>
+<% else %>
+  <%= image_tag "default-avatar.png", class:"user_profile_image" %>
+<% end %>
 <p><%= link_to "編集",  users_profile_edit_path %></p>
-
