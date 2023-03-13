@@ -33,6 +33,10 @@
       <p style="color: red;"><%= @user.errors.full_messages_for(:password_confirmation).first %></p>
     <% end %>
   </div>
+  <div>
+    <%= f.label :hotel_image, "施設画像" %>
+    <%= f.file_field :hotel_image %>
+  </div>
   <div class="actions">
     <%= f.submit "新しいアカウントを作成" %>
   </div>
