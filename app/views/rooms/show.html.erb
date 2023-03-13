@@ -1,6 +1,8 @@
 <p>施設詳細</p>
 <p><%= link_to "← 戻る", :back %></p>
-<p><%= link_to "編集", edit_room_path(@room.id) %></p>
+<% if @room.user_id == current_user.id %>
+  <p><%= link_to "編集", edit_room_path(@room.id) %></p>
+<% end %>
 <div>
   <% if @room.hotel_image? %>
     <%= image_tag @room.hotel_image.url, class:"hotel_image" %>

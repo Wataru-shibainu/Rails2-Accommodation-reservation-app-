@@ -60,6 +60,11 @@ class RoomsController < ApplicationController
 
   def edit
     @room = Room.find(params[:id])
+
+    # 施設登録者でない場合、編集ページに移行不能（URL直打ちによる編集防止）
+    return unless @room.user_id != current_user.id
+
+    redirect_to room_path(@room.id)
   end
 
   def update
